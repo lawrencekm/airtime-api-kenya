@@ -1,0 +1,69 @@
+services:
+#php image that will be run from node container for encryption.
+  pesapoint-php:
+    build: .
+    volumes:
+      - ./:/usr/src/myapp
+    container_name: pesapoint-php
+    restart: on-failure
+    tty: true
+    stdin_open: true
+    networks:
+      - pesapointnet
+  npm:
+    build:
+      context: .
+      dockerfile: ./node.dockerfile
+    container_name: npm
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      #- 3000:3000
+      - 3001:3001
+    #working_dir: /usr/src/app
+    #entrypoint: ['node', 'Topup.js']
+    networks:
+      - pesapointnet
+
+  encryptnginx:
+    build:
+      context: ./nginx
+      dockerfile: nginx.dockerfile
+    ports: 
+      - "8087:80"
+    networks:
+      - pesapointnet
+    volumes:
+      - ./:/var/www/html
+
+  encryptphp:
+    build:
+      context: ./php
+      dockerfile: php.dockerfile
+    networks:
+      - pesapointnet
+    volumes:
+      - ./:/var/www/html
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    networks:
+      - pesapointnet
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8086:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+    networks:
+      - pesapointnet
+networks:
+  pesapointnet:
+    external: false
