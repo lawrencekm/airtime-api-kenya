@@ -2,33 +2,20 @@
 
 [Airtime API Kenya](https://bitbucket.github.io/) is a Lightweight Airtime Purchase API for Kenya that is built with Node.js, Express and docker (legacy encryption required by supplier API.)
 
-Airtime API is proprietary and supported by Sozuri. The goal is to create a general-purpose, Kenya resell airtime API for vendors to sell airtime and earn commissions.
+Airtime API is supported by Wezadata. The goal is to create a general-purpose, Kenya resell airtime API for vendors to sell airtime and earn commissions.
 
 ## Contributing
 
-Airtime API is proprietary but will be open sourced soon. To contribute, contact Lawrencekm04@gmail.com
+To contribute, contact Lawrencekm04@gmail.com
 To get involved, visit:
 
-+ [Sozuri Support](https://sozuri.net)
-+ [Code Contribution Guide](https://sozuri.net)
-+ [Frequently Asked Questions](https://sozuri.net)
-+ [Bugs](https://sozuri.net)
-+ [Projects](https://sozuri.net)
++ [Sozuri Support](https://wezadata.com)
++ [Code Contribution Guide](https://wezadata.com)
++ [Frequently Asked Questions](wezadata.com)
++ [Bugs](https://wezadata.com)
++ [Projects](https://wezadata.com)
 
 Feel free to stop by our Office in Nairobi for questions or guidance or coffee.
-
-## Getting Started
-
-### Online demo
-
-Please note that the "Modern browsers" version assumes native support for
-features such as optional chaining, nullish coalescing,
-and private `class` fields/methods.
-
-+ Modern browsers: https://sozuri.net/topup
-
-+ Older browsers: https://sozuri.net/topup
-
 
 
 ## Building Airtime API
@@ -47,45 +34,76 @@ sudo chmod 666 /var/run/docker.sock
 + Your Airtime API is available on localhost:3002
 
 
-## Using Airtime API in a web application
+## Using Airtime API
 
-To use Airtime API in a web application you can ....
+This application provides an integration between a Node.js API and a legacy PHP container for encryption. 
+The Node.js API interacts with the legacy PHP container for encryption purposes and responds to the caller with the results of the Airtime API request.
 
-## Using Airtime API in a mobile application
+Components:
+Node.js API (npm)
 
+A Node.js API service responsible for handling incoming requests and interacting with the legacy PHP container for encryption.
+Exposes endpoints to facilitate communication with the legacy PHP container and the Airtime API.
+Runs on port 3001 internally.
 
+Legacy PHP Container (pesapoint-php)
 
-## Learning
+A PHP container used for encryption, accessed by the Node.js API service.
+Provides encryption functionality required for processing Airtime API requests.
+Located within the internal Docker network.
 
-You can play with the Airtime API API directly from sozuri API sandbox:
+Encryption NGINX (encryptnginx)
+NGINX server for serving the encryption-related PHP files.
+Ensures proper routing and communication between the Node.js API and the PHP container.
+Exposed externally on port 8087.
 
-+ [Interactive examples](https://sozuri.net/#interactive-examples)
+Encryption PHP (encryptphp)
+Contains PHP files necessary for encryption functionalities.
+Connected to the Node.js API and provides encryption services as required.
+Integrated into the internal Docker network.
 
-More examples can be found in the [documentation](https://sozuri.net/docs).
+MongoDB and MongoDB Express (mongo, mongo-express)
+MongoDB database and MongoDB Express web-based administrative interface for data storage and management.
+Configured to run on the internal Docker network.
+MongoDB accessible at mongodb://root:example@mongo:27017/.
 
-For an introduction to the Airtime API code, check out the presentation by our
-contributor David W:
+Setup
+Ensure Docker is installed on your system.
+Clone the repository containing the Docker configuration and application code.
 
-+ https://sozuri.net/docs
+Build and Run
+Navigate to the project directory.
+Execute docker-compose up --build to build and start the Docker containers.
 
-More learning resources can be found at:
+Accessing Services
+The Node.js API service is accessible at http://localhost:3001.
+Encryption NGINX is available at http://localhost:8087.
+MongoDB Express can be accessed at http://localhost:8086.
+The php container will be automatically accessed by the node container
 
-+ https://sozuri.net/docs
+Interacting with the API
+Utilize the provided endpoints of the Node.js API to interact with the Airtime API and encryption functionalities.
+Refer to the API documentation for details on available endpoints and usage.
 
-The API documentation can be found at:
+Note:
+Ensure proper network configuration to enable communication between Docker containers.
+Customize ports and configurations as needed for your environment.
+For security reasons, ensure that sensitive information such as passwords and API keys are managed securely.
+Continuous monitoring and maintenance of the Docker environment are recommended for optimal performance.
 
-+ https://sozuri.net/docs
+Enjoy seamless integration with the Airtime API using this robust Node.js and PHP encryption solution! 🚀
+
 
 ## Questions
 
 Check out our FAQs and get answers to common questions:
 
-+ https://sozuri.net
++ https://wezadata.com
 
 File an issue:
 
-+ https://sozuri.net/
++ https://wezadata.com
 
-Follow us on Twitter: @pdfjs
+Follow us on Twitter: 
 
-+ https://twitter.com/sozuri
++ https://twitter.com/yulemsee
