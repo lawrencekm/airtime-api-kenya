@@ -1,4 +1,4 @@
-# Airtime API 
+# Airtime API Kenya [Safaricom, Airtel, Telkom, Faiba networks]
 
 [Airtime API Kenya](https://bitbucket.github.io/) is a Lightweight Airtime Purchase API for Kenya that is built with Node.js, Express and docker (legacy encryption required by supplier API.)
 
