@@ -9,7 +9,7 @@ Airtime API is supported by Wezadata. The goal is to create a general-purpose, K
 To contribute, contact Lawrencekm04@gmail.com
 To get involved, visit:
 
-+ [Sozuri Support](https://wezadata.com)
++ [Support](https://wezadata.com)
 + [Code Contribution Guide](https://wezadata.com)
 + [Frequently Asked Questions](wezadata.com)
 + [Bugs](https://wezadata.com)
