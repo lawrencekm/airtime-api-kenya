@@ -1,22 +1,8 @@
 # Airtime API Kenya [Safaricom, Airtel, Telkom, Faiba networks]
 
-[Airtime API Kenya](https://bitbucket.github.io/) is a Lightweight Airtime Purchase API for Kenya that is built with Node.js, Express and docker (legacy encryption required by supplier API.)
+This is a Lightweight Airtime Purchase API for Kenya that is built with Node.js, Express and docker.
 
 Airtime API is supported by Wezadata. The goal is to create a general-purpose, Kenya resell airtime API for vendors to sell airtime and earn commissions.
-
-## Contributing
-
-To contribute, contact Lawrencekm04@gmail.com
-To get involved, visit:
-
-+ [Support](https://wezadata.com)
-+ [Code Contribution Guide](https://wezadata.com)
-+ [Frequently Asked Questions](wezadata.com)
-+ [Bugs](https://wezadata.com)
-+ [Projects](https://wezadata.com)
-
-Feel free to stop by our Office in Nairobi for questions or guidance or coffee.
-
 
 ## Using Airtime API
 
@@ -68,16 +54,3 @@ Continuous monitoring and maintenance of the Docker environment are recommended 
 Enjoy seamless integration with the Airtime API using this robust Node.js and PHP encryption solution! 🚀
 
 
-## Questions
-
-Check out our FAQs and get answers to common questions:
-
-+ https://wezadata.com
-
-File an issue:
-
-+ https://wezadata.com
-
-Follow us on Twitter: 
-
-+ https://twitter.com/yulemsee
