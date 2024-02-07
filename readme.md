@@ -18,36 +18,18 @@ To get involved, visit:
 Feel free to stop by our Office in Nairobi for questions or guidance or coffee.
 
 
-## Building Airtime API
-
-+ Install docker and docker compose. See here for instructions: []
-+ Install node js.  See here for instructions:
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
-sudo apt-get install -y nodejs
-+ ensure you can run docker
-sudo chmod 666 /var/run/docker.sock
-+ Git clone this folder into your directory
-+ cd into directory and run docker compose up -d --build . (modify to hosted image requiring only docker run lawre/airtime )
-+ Mark the image id of nginxencrypt container
-+ edit the server.js file and replace the runner exec command docker image id with value above. eg. 
-+ Run npm start
-+ Your Airtime API is available on localhost:3002
-
-
 ## Using Airtime API
 
 This application provides an integration between a Node.js API and a legacy PHP container for encryption. 
 The Node.js API interacts with the legacy PHP container for encryption purposes and responds to the caller with the results of the Airtime API request.
 
-Components:
+## Components:
 Node.js API (npm)
-
 A Node.js API service responsible for handling incoming requests and interacting with the legacy PHP container for encryption.
 Exposes endpoints to facilitate communication with the legacy PHP container and the Airtime API.
 Runs on port 3001 internally.
 
 Legacy PHP Container (pesapoint-php)
-
 A PHP container used for encryption, accessed by the Node.js API service.
 Provides encryption functionality required for processing Airtime API requests.
 Located within the internal Docker network.
@@ -56,11 +38,6 @@ Encryption NGINX (encryptnginx)
 NGINX server for serving the encryption-related PHP files.
 Ensures proper routing and communication between the Node.js API and the PHP container.
 Exposed externally on port 8087.
-
-Encryption PHP (encryptphp)
-Contains PHP files necessary for encryption functionalities.
-Connected to the Node.js API and provides encryption services as required.
-Integrated into the internal Docker network.
 
 MongoDB and MongoDB Express (mongo, mongo-express)
 MongoDB database and MongoDB Express web-based administrative interface for data storage and management.
@@ -77,15 +54,12 @@ Execute docker-compose up --build to build and start the Docker containers.
 
 Accessing Services
 The Node.js API service is accessible at http://localhost:3001.
-Encryption NGINX is available at http://localhost:8087.
-MongoDB Express can be accessed at http://localhost:8086.
-The php container will be automatically accessed by the node container
 
 Interacting with the API
 Utilize the provided endpoints of the Node.js API to interact with the Airtime API and encryption functionalities.
 Refer to the API documentation for details on available endpoints and usage.
 
-Note:
+Note
 Ensure proper network configuration to enable communication between Docker containers.
 Customize ports and configurations as needed for your environment.
 For security reasons, ensure that sensitive information such as passwords and API keys are managed securely.
